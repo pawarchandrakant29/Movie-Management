@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Prime</title>
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Link to Custom CSS -->
+     <link rel="icon" href="./img/logo.png">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <!-- <img src="./img/prime.png" alt="Amazon Prime" class="prime-logo me-3"> Change this line for logo -->
+            <span class="navbar-brand-text">prime video</span>
+        </a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Movies</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">TV Shows</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Live TV</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Subscriptions</a>
+            </li>
+        </ul>
+        <form class="d-flex me-4">
+            <button class="btn text-white" type="button">
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
+        <div class="d-flex align-items-center me-3">
+            <button class="btn text-white" type="button">
+                <i class="fas fa-th-large"></i>
+            </button>
+            <button class="btn text-white" type="button">
+                <i class="fas fa-bookmark"></i>
+            </button>
+            <button class="btn text-white" type="button">
+                <i class="fas fa-user-circle"></i>
+            </button>
+        </div>
+        <a href="/add" class="btn btn-primary">Add Movies</a>
+    </nav>
+
+    <!-- Movie Cards Section -->
+    <div class="container mt-5">
+        <h1 class=" ms-3 mb-2 pb-1">Movies</h1>
+        <div class="d-flex flex-wrap">
+            <% data.forEach((m, index)=> { %>
+                <div class="col-3 mb-4 ms-3">
+                    <div class="card movie-card">
+                        <div class="img-container">
+                            <img src="<%= m.path %>" alt="<%= m.title %>" class="movie-poster">
+                        </div>
+                        <div class="card-hover">
+                            <div class="card-title">
+                                <span>
+                                    <%= m.title %>
+                                </span>
+                            </div>
+                            <div class="btn-play">
+                                <i class="fa-solid fa-play me-2"></i>Play
+                            </div>
+                            <div class="d-flex mt-2">
+                                <div class="btn-add">
+                                    <i class="fa-solid fa-plus"></i>
+                                </div>
+                                <div class="btn-add ms-2">
+                                    <i class="fa-solid fa-ban"></i>
+                                </div>
+
+                            </div>
+                            <div class="mt-2">
+                                <i class="fa-solid fa-circle-check "></i> Prime Video
+                            </div>
+                            <div class="d-flex mt-2">
+                                <span class="text-secondary fw-semibold">
+                                    <%= m.year %>
+                                </span>
+                                <span class="ms-2 text-secondary fw-semibold">
+                                    <%= m.time %>
+                                </span>
+                                <span class="ms-2 bg-grey">
+                                    U/A 16+
+                                </span>
+                            </div>
+                            <p class="card-description mt-1">
+                                <%= m.description %>
+                            </p>
+                            <div class="btn-group">
+                                <a href="/singleMovieRec/<%= m.id %>" class="btn btn-edit">
+                                    <i class="fas fa-edit "></i>
+                                </a>
+                                <a href="/deleteMovie/<%= m.id %>" class="btn btn-delete">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

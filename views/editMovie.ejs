@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Prime</title>
+
+    <!-- Google Fonts for modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="./img/logo.png">
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #141414;
+            
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Form container */
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #222;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        h2 {
+            text-align: center;
+            color: #1399FF;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: #b3b3b3;
+            /* Light gray text */
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="file"],
+        textarea,
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #555;
+            background-color: #ffffff;
+            color: #000;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input[type="text"]::placeholder,
+        textarea::placeholder {
+            color: #777;
+            /* Placeholder text color */
+        }
+
+        /* Image preview styling */
+        .img-preview {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .img-preview img {
+            width: 200px;
+            height: 120px;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        /* Button styling */
+        .update-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1399FF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+
+        .navbar {
+            background-color: #141414;
+            padding: 1rem;
+        }
+
+
+
+        /* Mobile responsiveness */
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <!-- <img src="./img/prime.png" alt="Amazon Prime" class="prime-logo me-3"> Change this line for logo -->
+            <span class="navbar-brand-text">prime video</span>
+        </a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Movies</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">TV Shows</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Live TV</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Subscriptions</a>
+            </li>
+        </ul>
+        <form class="d-flex me-4">
+            <button class="btn text-white" type="button">
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
+        <div class="d-flex align-items-center me-3">
+            <button class="btn text-white" type="button">
+                <i class="fas fa-th-large"></i>
+            </button>
+            <button class="btn text-white" type="button">
+                <i class="fas fa-bookmark"></i>
+            </button>
+            <button class="btn text-white" type="button">
+                <i class="fas fa-user-circle"></i>
+            </button>
+        </div>
+    </nav>
+
+
+    <div class="form-container">
+        <h2 class="mt-0">Edit Movie</h2>
+        <form action="/updatedMovies/<%= data._id %>" method="post" enctype="multipart/form-data">
+
+            <!-- Title input -->
+            <div class="img-preview">
+                <img src="../<%= data.path %>" alt="<%= data.title %>" class="img" />
+                <label for="poster"></label>
+            </div>
+            <input type="file" name="poster" id="poster" />
+            <label for="title">Movie Name</label>
+            <input name="title" type="text" id="title" value="<%= data.title %>" placeholder="Movie Name" />
+
+            <label for="year">Year</label>
+            <input name="year" type="number" id="year" value="<%= data.year %>" placeholder="Year" />
+            <label for="time">Time Duration</label>
+            <input name="time" type="text" id="time" value="<%= data.time %>" placeholder="Year" />
+
+            <label for="description">Description</label>
+            <textarea name="description" id="description" rows="2"
+                placeholder="Enter movie description"><%= data.description %></textarea>
+
+            <button class="update-btn" type="submit">Update Movie</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
