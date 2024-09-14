@@ -36,7 +36,7 @@ Welcome to Movie Management, a web application designed for efficiently managing
 <h3>
     Mentor :- <a href="https://github.com/keyurgohil13">Keyur Gohil </a>
 </h3>
-<h3> Full Website Screenshots & Video 💻></h3>
+<h3> Full Website Screenshots & Video 💻</h3>
 <ul>
   <li>
     Dashboard
